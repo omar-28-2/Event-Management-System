@@ -61,6 +61,12 @@
     />
   </head>
   <body>
+    <!-- Success message placeholder -->
+    {% if success %}
+        <div class="success-message">
+            <p>Thank you! Your message has been submitted successfully.</p>
+        </div>
+    {% endif %}
     <div class="hero contact-page">
       <div
         data-collapse="medium"
@@ -101,11 +107,10 @@
             id="email-form"
             name="email-form"
             data-name="Email Form"
-            method="get"
-            data-wf-page-id="674b4dc864a268c25eabfa75"
-            data-wf-element-id="67de8170-af48-4b93-d21c-023ab4113e28"
-            data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e"
+            method="post"
+            action="{% url 'contact' %}" 
           >
+          {% csrf_token %} 
             <label for="name" class="field">Name</label
             ><input
               class="input w-input"
@@ -128,7 +133,7 @@
             /><label for="field" class="field">Message</label
             ><textarea
               id="field"
-              name="field"
+              name="message"
               placeholder="Example Text"
               maxlength="5000"
               data-name="field"
@@ -156,7 +161,7 @@
         <div class="footer w-container">
           <div class="footer-container w-row">
             <div class="column w-col w-col-4">
-              <h1 class="heading">nu Marche</h1>
+              <h1 class="heading">Tiketawy</h1>
             </div>
             <div class="column-2 w-col w-col-3">
               <a href="{% url 'index' %}" class="link">all tickets on sale</a>
@@ -177,7 +182,7 @@
       crossorigin="anonymous"
     ></script>
     <script
-      src="./script.js"
+      src="{% static 'js/script.js' %}"
       type="text/javascript"
     ></script>
   </body>
