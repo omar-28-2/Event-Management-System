@@ -1,44 +1,52 @@
+
+
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'Home/signUp.css' %}">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'Home/signup.css' %}">
 </head>
 <body>
     <div class="box">
         <span class="borderLine"></span>
-        <form method="POST">
-            {% csrf_token %}
-            <h2>Sign up</h2>
+        <form>
+            
+            <h2> Sign up</h2>
             <div class="inputBox">
-                <input type="email" name="email" value="{{ form.email.value }}" required="required">
-                <span>E-Mail</span>
+                <input type="email" required>
+                <span>E-Mail</E-Mail></span>
                 <i></i>
+               </div>
+            <div class="inputBox">
+             <input type="text" required>
+             <span>Username</span>
+             <i></i>
             </div>
             <div class="inputBox">
-                <input type="text" name="username" value="{{ form.username.value }}" required="required">
-                <span>Username</span>
-                <i></i>
-            </div>
-            <div class="inputBox">
-                <input type="password" name="password1" value="{{ form.password1.value }}" required="required">
+                <input type="password" required>  
                 <span>Password</span>
                 <i></i>
-            </div>
-            <div class="inputBox">
-                <input type="password" name="password2" value="{{ form.password2.value }}" required="required">
+               </div>
+               <div class="inputBox">
+                <input type="password" required>  
                 <span>Confirm Password</span>
                 <i></i>
-            </div>
-            <div class="links">
-                <input type="checkbox" id="remember">
+               </div>
+               <div class="inputBox">
+                <input type="tel" required>  
+                <span>Phone number</span>
+                <i></i>
+               </div>
+               <div class="links">
+                <input type="checkbox" id="remember" >
                 <label for="remember" class="rem">Remember Me</label>
-                <a href="{% url 'login' %}">Login</a>
-            </div>
-            <input type="submit" value="Submit">
+                <a href="{% url 'login' %}">Submit</a>
+               </div>
+               <input type="submit" value="submit">
         </form>
     </div>
+    
 </body>
 </html>

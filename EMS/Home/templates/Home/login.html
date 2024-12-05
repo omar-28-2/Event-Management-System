@@ -1,9 +1,12 @@
+
+
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="{% static 'Home/login.css' %}">
 </head>
 <body>
     <div class="box">
@@ -22,9 +25,9 @@
                </div>
                <div class="links">
                 <a href="#">Forget Password</a>
-                <a href="signUp.html">Sign Up</a>
+                <a href="{% url 'index' %}">Login</a>
                </div>
-               <input type="submit" value="login">
+               <input type="submit" value="login">i
         </form>
     </div>
     
