@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'users/login.css' %}">
+</head>
+<body>
+    <div class="box">
+        <span class="borderLine"></span>
+        {% if messages %}
+        <div id="message-box" name="message-box">
+            {% for message in messages %}
+                <p class="message-box alert {{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <h2>Login</h2>
+            <div class="inputBox">
+                <input type="email" id="email" name="email" required="required" value="{{ request.POST.email }}">
+                <span>E-Mail</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="password" id="password" name="password" required="required">  
+                <span>Password</span>
+                <i></i>
+            </div>
+            <div class="links">
+                <a href="{% url 'signup' %}">Don't have an account? Sign Up</a>
+            </div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+</html>

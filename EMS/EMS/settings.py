@@ -17,6 +17,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -27,7 +29,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Home',
+    'users',
 ]
+
 
 
 MIDDLEWARE = [
@@ -49,7 +53,7 @@ ROOT_URLCONF = 'EMS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],  # Add this line if using a global templates directory
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,10 +114,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "Home/static"),
+    os.path.join(BASE_DIR, "users/static"),
 ]
 
 
