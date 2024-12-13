@@ -30,8 +30,4 @@ def contactForm(request):
         
     return render(request, "Home/contact.html")
 
-def signup(request):
-    return render(request, 'Home/signUp.html')
 
-def login(request):
-    return render(request, 'Home/login.html')
