@@ -20,12 +20,12 @@
             {% csrf_token %}
             <h2>Login</h2>
             <div class="inputBox">
-                <input type="email" id="email" name="email" required="required" value="{{ request.POST.email }}">
-                <span>E-Mail</span>
+                <input type="username" id="username" name="username" required>
+                <span>Username</span>
                 <i></i>
             </div>
             <div class="inputBox">
-                <input type="password" id="password" name="password" required="required">  
+                <input type="password" id="password" name="password" required>  
                 <span>Password</span>
                 <i></i>
             </div>
