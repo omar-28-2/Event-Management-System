@@ -28,28 +28,33 @@ def signup(request):
             return render(request, 'users/signup.html')
 
         # Save the user
-        user = CustomUser(email=email, username=username, phone_number=phone_number, user_type=user_type)
+        # user = CustomUser(email=email, username=username,password=password, phone_number=phone_number, user_type=user_type, is_active=True)
+        # user.save()
+        user = CustomUser(email=email,username=username,phone_number=phone_number,user_type=user_type,is_active=True)
         user.set_password(password)  # Hash the password
         user.save()
-        messages.success(request, "Signup successful!")
 
+        messages.success(request, "Signup successful!")
         return redirect("login")
 
     return render(request, 'users/signup.html')
 
 def login_user(request):
     if request.method == "POST":
-        email = request.POST.get('email')
+        username = request.POST.get('username')
         password = request.POST.get('password')
-
+        
+        
         # Authenticate the user
-        user = authenticate(request, username=email, password=password)
+        user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
+            print(f"i am here for logging") ## Debugging line
             return redirect('index')
         else:
             messages.error(request, "Invalid email or password. Please try again.")
+            print(f"i am here for not logging") ## Debugging line 
             return redirect("login")
 
     return render(request, "users/login.html")

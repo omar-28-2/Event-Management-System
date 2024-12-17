@@ -25,7 +25,7 @@
                 <i></i>
             </div>
             <div class="inputBox">
-                <input type="text" name="username" required>
+                <input type="username" name="username" required>
                 <span>Username</span>
                 <i></i>
             </div>
@@ -53,8 +53,7 @@
                 <span>User Type</span>
             </div>            
             <div class="links">
-                <input type="checkbox" id="remember">
-                <label for="remember" class="rem">Remember Me</label>
+                <a href="{% url 'login' %}">Already have an account? login</a>
             </div>
             <input type="submit" value="Submit">
         </form>
