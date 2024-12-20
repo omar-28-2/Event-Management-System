@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
 from .models import CustomUser
 from django.contrib import messages
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 import re
 
 
 def signup(request):
+    if request.user.is_authenticated:  # Redirect logged-in users away from the signup page
+        return redirect('index')
+    
     if request.method == "POST":
         email = request.POST.get('email')
         username = request.POST.get('username')
@@ -66,6 +69,10 @@ def signup(request):
     return render(request, 'users/signup.html')
 
 def login_user(request):
+    
+    if request.user.is_authenticated:  # Redirect logged-in users away from the login page
+        return redirect('index')
+    
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -86,4 +93,9 @@ def login_user(request):
     return render(request, "users/login.html")
 
 
-    
+def logout_user(request):
+    if request.user.is_authenticated:
+        logout(request)
+        messages.success(request, "You have successfully logged out.")
+        return redirect('login')
+    return redirect('login')  # Redirect if not logged in

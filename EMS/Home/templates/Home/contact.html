@@ -9,7 +9,7 @@
   <head>
     {% load static %}
     <meta charset="utf-8" />
-    <title>Zeyad&#x27;s Fantastic Site</title>
+    <title>Tiketawy</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
     <link href="https://cdn.prod.website-files.com/674b4dc864a268c25eabfa38/css/zeyads-fantastic-site-c17a19.webflow.326867b2d.css" rel="stylesheet"type="text/css" />
@@ -99,19 +99,25 @@
         role="banner"
         class="nav w-nav">
         <div class="w-container">
-          <a href="{% url 'index' %}" class="logo w-nav-brand"><div
-              class="div-block">Tiketawy</div></a>
+          <a href="{% url 'index' %}" class="logo w-nav-brand">
+              <div class="div-block">Tiketawy</div>
+          </a>
           <nav role="navigation" class="nav-menu w-nav-menu">
-            <a href="{% url 'index' %}" class="nav-link w-nav-link">EVENTS</a><a
-              href="{% url 'about' %}" class="nav-link w-nav-link">About</a><a
-              href="{% url 'contact' %}"
-              aria-current="page"
-              class="nav-link w-nav-link w--current">Contact</a>
+              <a href="/" aria-current="page" class="nav-link w-nav-link w--current">EVENTS</a>
+              <a href="{% url 'about' %}" class="nav-link w-nav-link">About</a>
+              <a href="{% url 'contact' %}" class="nav-link w-nav-link">Contact</a>
+              {% if not request.user.is_authenticated %}
+                  <a href="{% url 'signup' %}" class="nav-link w-nav-link">Sign Up</a>
+                  <a href="{% url 'login' %}" class="nav-link w-nav-link">Sign In</a>
+              {% endif %}
+              {% if request.user.is_authenticated %}
+                  <a href="{% url 'logout' %}" class="nav-link w-nav-link">Log out</a>
+              {% endif %}
           </nav>
           <div class="menu-button w-nav-button">
-            <div class="w-icon-nav-menu"></div>
+              <div class="w-icon-nav-menu"></div>
           </div>
-        </div>
+         </div>
       </div>
       <div class="heading-wrapper w-container">
         <h1 class="main-heading">
