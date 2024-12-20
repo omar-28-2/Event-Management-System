@@ -685,7 +685,7 @@ html {
   }
   
   .w-container {
-    max-width: 940px;
+    max-width: 950px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -1904,7 +1904,7 @@ html {
     float: right;
     cursor: pointer;
     -webkit-tap-highlight-color: #0000;
-    tap-highlight-color: #0000;
+    -webkit-text-fill-color: #0000;
     -webkit-user-select: none;
     user-select: none;
     padding: 18px;
@@ -2779,3 +2779,57 @@ html {
       margin-right: 18px;
     }
   }
+
+/* Profile dropdown styling */
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #000;
+  display: flex;
+  align-items: center;
+}
+
+.profile-btn:hover {
+  color: #fbb03b; /* Highlight color for hover */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 200px;
+}
+
+.dropdown-content a {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-content a i {
+  margin-right: 10px;
+}
+
+/* Show dropdown on button hover */
+.profile-dropdown:hover .dropdown-content {
+  display: block;
+}
