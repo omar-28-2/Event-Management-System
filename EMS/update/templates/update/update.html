@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User Information</title>
+    <link rel="stylesheet" href="{% static 'update/style.css' %}">
+</head>
+<body>
+    <!-- Message Section -->
+    {% if messages %}
+    <div id="message-container">
+        {% for message in messages %}
+        <div class="alert {% if message.tags == 'error' %}error{% else %}success{% endif %}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Main Update Form Section -->
+    <div class="box">
+        <div class="borderLine"></div>
+        <form method="POST" action="{% url 'update' %}">
+            {% csrf_token %}
+            <h2>Update Information</h2>
+
+            <!-- Update Choice Section -->
+            <div class="update-options">
+                <p>What would you like to update?</p>
+                <label>
+                    <input type="radio" name="update_choice" value="1" id="phone_radio">
+                    <span>Phone Number</span>
+                </label>
+                <label>
+                    <input type="radio" name="update_choice" value="2" id="password_radio">
+                    <span>Password</span>
+                </label>
+                <label>
+                    <input type="radio" name="update_choice" value="3" id="both_radio">
+                    <span>Both</span>
+                </label>
+            </div>
+
+            <!-- Phone Section -->
+            <div id="phone_section" class="hidden-section">
+                <div class="inputBox">
+                    <input type="text" name="new_phone" id="new_phone">
+                    <span>New Phone Number</span>
+                </div>
+            </div>
+
+            <!-- Password Section -->
+            <div id="password_section" class="hidden-section">
+                <div class="inputBox">
+                    <input type="password" name="new_password" id="new_password">
+                    <span>New Password</span>
+                </div>
+                <div class="inputBox">
+                    <input type="password" name="confirm_password" id="confirm_password">
+                    <span>Confirm New Password</span>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="inputBox">
+                <input type="submit" value="Update">
+            </div>
+        </form>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const phoneRadio = document.getElementById("phone_radio");
+            const passwordRadio = document.getElementById("password_radio");
+            const bothRadio = document.getElementById("both_radio");
+
+            const phoneSection = document.getElementById("phone_section");
+            const passwordSection = document.getElementById("password_section");
+
+            function updateVisibility() {
+                phoneSection.style.display = phoneRadio.checked || bothRadio.checked ? "block" : "none";
+                passwordSection.style.display = passwordRadio.checked || bothRadio.checked ? "block" : "none";
+            }
+
+            phoneRadio.addEventListener("change", updateVisibility);
+            passwordRadio.addEventListener("change", updateVisibility);
+            bothRadio.addEventListener("change", updateVisibility);
+
+            updateVisibility(); // Initial setup
+        });
+    </script>
+</body>
+</html>

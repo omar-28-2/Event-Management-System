@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Home',
     'users',
+    'update',
 ]
 
 
@@ -119,6 +120,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "Home/static"),
     os.path.join(BASE_DIR, "users/static"),
+    os.path.join(BASE_DIR, "update/static"),
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
