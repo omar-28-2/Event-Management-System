@@ -17,6 +17,54 @@ body {
     padding-top: 20px;
 }
 
+/* Navbar Styling */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #1c1c1c;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar h1 {
+    font-size: 24px;
+    color: #45f3ff;
+    font-weight: bold;
+}
+
+.nav-right {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btn {
+    text-decoration: none;
+    padding: 8px 15px;
+    background: #45f3ff;
+    color: #1c1c1c;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-btn:hover {
+    background: #36c3cc;
+}
+
+.logout-btn {
+    background: #ff4545;
+}
+
+.logout-btn:hover {
+    background: #cc3636;
+}
+
 /* Box Styling */
 .box {
     position: relative;
@@ -141,15 +189,6 @@ input[type="submit"]:hover {
     margin: 0 auto;
 }
 
-/* Container for both boxes */
-.container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
 /* User Data Box Styling */
 .user-data-box {
     position: relative;
@@ -180,4 +219,3 @@ input[type="submit"]:hover {
 .user-data-box strong {
     color: #45f3ff;
 }
-

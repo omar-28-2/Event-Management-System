@@ -65,10 +65,10 @@
                 {% endif %}
                 {% if request.user.is_authenticated %}
                 {% if user.user_type == 'vendor' %}
-                <a href="{% url 'index' %}" class="nav-link w-nav-link">Create Request</a>
+                <a href="{% url 'request_form' %}" class="nav-link w-nav-link">Create Request</a>
                 {% endif %}
                 <div class="profile-dropdown">
-                  <button class="profile-btn">
+                  <button class="profile-btn">  
                       <i class="fa fa-user-circle" aria-hidden="true"></i>
                   </button>
                   <div class="dropdown-content">
