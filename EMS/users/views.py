@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import CustomUser
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 import re
 
 
@@ -97,5 +98,57 @@ def logout_user(request):
     if request.user.is_authenticated:
         logout(request)
         messages.success(request, "You have successfully logged out.")
-        return redirect('login')
+        return redirect('index')
     return redirect('login')  # Redirect if not logged in
+
+
+@login_required
+def update(request):
+    if request.method == "POST":
+        user = request.user  # Get the currently logged-in user
+        update_choice = request.POST.get('update_choice')
+
+        # Handle phone number update
+        if update_choice in ['1', '3']:  # '1' for phone only, '3' for both
+            new_phone = request.POST.get('new_phone')
+            if not new_phone:
+                messages.error(request, "Phone number cannot be empty!")
+                return redirect('update')
+            if not re.match(r'^\d{11}$', new_phone):  # Assumes phone number should be 11 digits
+                messages.error(request, "Phone number must be 11 digits!")
+                return redirect('update')
+            if CustomUser.objects.filter(phone_number=new_phone).exclude(id=user.id).exists():
+                messages.error(request, "Phone number already exists!")
+                return redirect('update')
+            user.phone_number = new_phone
+
+        # Handle password update
+        if update_choice in ['2', '3']:  # '2' for password only, '3' for both
+            new_password = request.POST.get('new_password')
+            confirm_password = request.POST.get('confirm_password')
+            if not new_password or not confirm_password:
+                messages.error(request, "Password fields cannot be empty!")
+                return redirect('update')
+            if new_password != confirm_password:
+                messages.error(request, "Passwords do not match!")
+                return redirect('update')
+            # Validate password strength
+            if not re.fullmatch(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$', new_password):
+                messages.error(
+                    request,
+                    "Password must contain at least 8 characters, including uppercase, lowercase, number, and a symbol."
+                )
+                return redirect('update')
+            user.set_password(new_password)  # Hash and set the new password
+
+        # Save the updated user object
+        user.save()
+        # Debugging prints
+        username = user.username  # Use user.username for the current username
+        password = new_password if update_choice in ['2', '3'] else None
+        phone = new_phone if update_choice in ['1', '3'] else None
+        print(f"Debugging Info - Username: {username}, New Password: {password}, New Phone: {phone}")
+        messages.success(request, "Profile updated successfully!")
+        return redirect('update')  # Redirect to the update page or any other page
+
+    return render(request, 'users/update_profile.html')

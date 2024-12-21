@@ -1,0 +1,221 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    background: #23242a;
+    color: #ffffff;
+    padding-top: 20px;
+}
+
+/* Navbar Styling */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #1c1c1c;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar h1 {
+    font-size: 24px;
+    color: #45f3ff;
+    font-weight: bold;
+}
+
+.nav-right {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btn {
+    text-decoration: none;
+    padding: 8px 15px;
+    background: #45f3ff;
+    color: #1c1c1c;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-btn:hover {
+    background: #36c3cc;
+}
+
+.logout-btn {
+    background: #ff4545;
+}
+
+.logout-btn:hover {
+    background: #cc3636;
+}
+
+/* Box Styling */
+.box {
+    position: relative;
+    width: 340px;
+    background: #1c1c1c;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 30px 25px;
+    margin-top: 80px;
+    transform: scale(1.15);
+    transition: height 0.3s ease;
+}
+
+/* Message Section Styling */
+#message-container {
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.alert {
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Success Message */
+.alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Error Message */
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Update Options */
+.update-options {
+    margin-bottom: 20px;
+}
+
+.update-options label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.update-options span {
+    margin-left: 10px;
+    color: #8f8f8f;
+}
+
+/* Input Box Styling */
+.inputBox {
+    position: relative;
+    margin-top: 15px;
+}
+
+.inputBox input {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    outline: none;
+    border: 1px solid #555;
+    border-radius: 5px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.inputBox input:focus {
+    border-color: #45f3ff;
+}
+
+.inputBox span {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #8f8f8f;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.inputBox input:focus ~ span,
+.inputBox input:valid ~ span {
+    top: -10px;
+    font-size: 12px;
+    color: #45f3ff;
+}
+
+/* Submit Button */
+input[type="submit"] {
+    border: none;
+    padding: 10px;
+    background: #45f3ff;
+    color: #23242a;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background: #36c3cc;
+}
+
+/* Container for both boxes */
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* User Data Box Styling */
+.user-data-box {
+    position: relative;
+    width: 340px;
+    background: #1c1c1c;
+    border-radius: 8px;
+    padding: 30px 25px;
+    margin-top: 80px;
+    transform: scale(1.15);
+    color: #ffffff;
+}
+
+.user-data-box h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.user-data-box ul {
+    list-style: none;
+}
+
+.user-data-box li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.user-data-box strong {
+    color: #45f3ff;
+}
