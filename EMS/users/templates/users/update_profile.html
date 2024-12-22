@@ -98,6 +98,17 @@
     <!-- JavaScript -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // Message auto-removal logic
+            const messageContainer = document.getElementById("message-container");
+            if (messageContainer) {
+                setTimeout(() => {
+                    messageContainer.style.transition = "opacity 0.5s";
+                    messageContainer.style.opacity = "0";
+                    setTimeout(() => messageContainer.remove(), 500); // Remove after fade-out
+                }, 5000); // Wait for 5 seconds
+            }
+
+            // Update visibility for form sections
             const phoneRadio = document.getElementById("phone_radio");
             const passwordRadio = document.getElementById("password_radio");
             const bothRadio = document.getElementById("both_radio");

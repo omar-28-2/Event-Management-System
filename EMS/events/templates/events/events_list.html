@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-    <!-- Use the static tag to load the CSS file -->
     <link href="{% static 'events/events_list_style.css' %}" rel="stylesheet" type="text/css" />
     <title>Events Ticket Card</title>
 </head>
+
 <body>
     <!-- Search Bar -->
     <div class="search-container">
@@ -20,244 +21,61 @@
             </button>
         </form>
     </div>
+
     <!-- Cards Container -->
     <div class="container">
+        {% for event in events %}
         <div class="item-container">
             <div class="img-container">
-                <img src="/static/events/images/img2.avif" alt="Event image">
+                <!-- Placeholder image until you add the actual event image logic -->
+                <img src="{% static 'images/placeholder.jpg' %}" alt="Event image">
             </div>
             <div class="body-container">
                 <div class="overlay"></div>
                 <div class="event-info">
-                    <p class="title">Bubbe's Book Club</p>
+                    <p class="title">{{ event.name }}</p>
                     <div class="separator"></div>
-                    <p class="info">Bellmore, NY</p>
-                    <p class="price">Free</p>
+                    <p class="info">{{ event.location }}</p>
+                    <p class="price">${{ event.price }}</p>
                     <div class="additional-info">
                         <p class="info">
                             <i class="fas fa-map-marker-alt"></i>
-                            Grand Central Terminal
+                            {{ event.location }}
                         </p>
                         <p class="info">
                             <i class="far fa-calendar-alt"></i>
-                            Sat, Sep 19, 10:00 AM EDT
+                            {{ event.date|date:"D, M d, Y h:i A" }}
                         </p>
                         <p class="info description">
-                            Welcome! Everyone has a unique perspective after reading a book, and we would love you
-                            to share yours with us! We meet one Sunday evening <span>more...</span>
+                            {{ event.description|slice:":100" }}...
                         </p>
                     </div>
                 </div>
                 <button class="action">Book it</button>
             </div>
         </div>
-        <div class="item-container">
-            <div class="img-container">
-                <img src="/static/events/images/img3.avif" alt="Event image">
-            </div>
-            <div class="body-container">
-                <div class="overlay"></div>
-                <div class="event-info">
-                    <p class="title">The Overstory</p>
-                    <div class="separator"></div>
-                    <p class="info">New York, NY</p>
-                    <p class="price">29$</p>
-                    <div class="additional-info">
-                        <p class="info">
-                            <i class="fas fa-map-marker-alt"></i>
-                            245 W 52nd St, New York
-                        </p>
-                        <p class="info">
-                            <i class="far fa-calendar-alt"></i>
-                            Sat, Sep 19, 10:00 AM EDT
-                        </p>
-                        <p class="info description">
-                            Welcome! Everyone has a unique perspective after reading a book, and we would love you
-                            to share yours with us! We meet one Sunday evening <span>more...</span>
-                        </p>
-                    </div>
-                </div>
-                <button class="action">Book it</button>
-            </div>
-        </div>
-        <div class="item-container">
-            <div class="img-container">
-                <img src="/static/events/images/img4.avif" alt="Event image">
-            </div>
-            <div class="body-container">
-                <div class="overlay"></div>
-                <div class="event-info">
-                    <p class="title">The NY Festival</p>
-                    <div class="separator"></div>
-                    <p class="info">New York, NY</p>
-                    <p class="price">70$</p>
-                    <div class="additional-info">
-                        <p class="info">
-                            <i class="fas fa-map-marker-alt"></i>
-                            245 W 52nd St, New York
-                        </p>
-                        <p class="info">
-                            <i class="far fa-calendar-alt"></i>
-                            Sat, Sep 19, 10:00 AM EDT
-                        </p>
-                        <p class="info description">
-                            Welcome! Everyone has a unique perspective after reading a book, and we would love you
-                            to share yours with us! We meet one Sunday evening <span>more...</span>
-                        </p>
-                    </div>
-                </div>
-                <button class="action">Book it</button>
-            </div>
-        </div>
-        <div class="item-container">
-            <div class="img-container">
-                <img src="/static/events/images/img5.avif" alt="Event image">
-            </div>
-            <div class="body-container">
-                <div class="overlay"></div>
-                <div class="event-info">
-                    <p class="title">Tech Bubble Conf</p>
-                    <div class="separator"></div>
-                    <p class="info">New York, NY</p>
-                    <p class="price">35$</p>
-                    <div class="additional-info">
-                        <p class="info">
-                            <i class="fas fa-map-marker-alt"></i>
-                            245 W 52nd St, New York
-                        </p>
-                        <p class="info">
-                            <i class="far fa-calendar-alt"></i>
-                            Sat, Sep 19, 10:00 AM EDT
-                        </p>
-                        <p class="info description">
-                            Welcome! Everyone has a unique perspective after reading a book, and we would love you
-                            to share yours with us! We meet one Sunday evening <span>more...</span>
-                        </p>
-                    </div>
-                </div>
-                <button class="action">Book it</button>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="item-container">
-            <div class="img-container">
-                <img src="/static/events/images/img6.avif" alt="Event image">
-            </div>
-            <div class="body-container">
-                <div class="overlay"></div>
-                <div class="event-info">
-                    <p class="title">Bubbe's Book Club</p>
-                    <div class="separator"></div>
-                    <p class="info">Bellmore, NY</p>
-                    <p class="price">Free</p>
-                    <div class="additional-info">
-                        <p class="info">
-                            <i class="fas fa-map-marker-alt"></i>
-                            Grand Central Terminal
-                        </p>
-                        <p class="info">
-                            <i class="far fa-calendar-alt"></i>
-                            Sat, Sep 19, 10:00 AM EDT
-                        </p>
-                        <p class="info description">
-                            Welcome! Everyone has a unique perspective after reading a book, and we would love you
-                            to share yours with us! We meet one Sunday evening <span>more...</span>
-                        </p>
-                    </div>
-                </div>
-                <button class="action">Book it</button>
-            </div>
-        </div>
-        <div class="item-container">
-            <div class="img-container">
-                <img src="/static/events/images/img6.avif" alt="Event image">
-            </div>
-            <div class="body-container">
-                <div class="overlay"></div>
-                <div class="event-info">
-                    <p class="title">The Overstory</p>
-                    <div class="separator"></div>
-                    <p class="info">New York, NY</p>
-                    <p class="price">29$</p>
-                    <div class="additional-info">
-                        <p class="info">
-                            <i class="fas fa-map-marker-alt"></i>
-                            245 W 52nd St, New York
-                        </p>
-                        <p class="info">
-                            <i class="far fa-calendar-alt"></i>
-                            Sat, Sep 19, 10:00 AM EDT
-                        </p>
-                        <p class="info description">
-                            Welcome! Everyone has a unique perspective after reading a book, and we would love you
-                            to share yours with us! We meet one Sunday evening <span>more...</span>
-                        </p>
-                    </div>
-                </div>
-                <button class="action">Book it</button>
-            </div>
-        </div>
-        <div class="item-container">
-            <div class="img-container">
-                <img src="/static/events/images/img7.avif" alt="Event image">
-            </div>
-            <div class="body-container">
-                <div class="overlay"></div>
-                <div class="event-info">
-                    <p class="title">The NY Festival</p>
-                    <div class="separator"></div>
-                    <p class="info">New York, NY</p>
-                    <p class="price">70$</p>
-                    <div class="additional-info">
-                        <p class="info">
-                            <i class="fas fa-map-marker-alt"></i>
-                            245 W 52nd St, New York
-                        </p>
-                        <p class="info">
-                            <i class="far fa-calendar-alt"></i>
-                            Sat, Sep 19, 10:00 AM EDT
-                        </p>
-                        <p class="info description">
-                            Welcome! Everyone has a unique perspective after reading a book, and we would love you
-                            to share yours with us! We meet one Sunday evening <span>more...</span>
-                        </p>
-                    </div>
-                </div>
-                <button class="action">Book it</button>
-            </div>
-        </div>
-        <div class="item-container">
-            <div class="img-container">
-                <img src="/static/events/images/img8.avif" alt="Event image">
-            </div>
-            <div class="body-container">
-                <div class="overlay"></div>
-                <div class="event-info">
-                    <p class="title">Tech Bubble Conf</p>
-                    <div class="separator"></div>
-                    <p class="info">New York, NY</p>
-                    <p class="price">35$</p>
-                    <div class="additional-info">
-                        <p class="info">
-                            <i class="fas fa-map-marker-alt"></i>
-                            245 W 52nd St, New York
-                        </p>
-                        <p class="info">
-                            <i class="far fa-calendar-alt"></i>
-                            Sat, Sep 19, 10:00 AM EDT
-                        </p>
-                        <p class="info description">
-                            Welcome! Everyone has a unique perspective after reading a book, and we would love you
-                            to share yours with us! We meet one Sunday evening <span>more...</span>
-                        </p>
-                    </div>
-                </div>
-                <button class="action">Book it</button>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
-    <script src="events_list_js.js"></script> 
+    <script>
+        document.getElementById("searchButton").addEventListener("click", function() {
+            const searchValue = document.getElementById("searchBar").value.toLowerCase();
+            const cards = document.querySelectorAll(".item-container");
+            cards.forEach((card) => {
+                const title = card.querySelector(".title").textContent.toLowerCase();
+                const location = card.querySelector(".info").textContent.toLowerCase();
+                const description = card.querySelector(".description") ? card.querySelector(
+                    ".description").textContent.toLowerCase() : "";
+                // Show the card if title, location or description matches the search value
+                if (title.includes(searchValue) || location.includes(searchValue) || description
+                    .includes(searchValue)) {
+                    card.style.display = "flex"; // Show the card
+                } else {
+                    card.style.display = "none"; // Hide the card
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
