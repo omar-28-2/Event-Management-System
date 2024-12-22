@@ -3,9 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Event
 
-@login_required
+
 def events_list(request):
-    return render(request, 'events/events_list.html')
+    events = Event.objects.all()  # Fetch all events from the database
+    return render(request, 'events/events_list.html', {'events': events})
 
 @login_required
 def request_form(request):
